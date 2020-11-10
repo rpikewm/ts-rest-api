@@ -301,7 +301,7 @@ paths:
       description: Removes user Enrollments
       tags:
         - Enrollments
-  '/users/externalId/{studentid}/subscription':
+  '/users/externalId/{external-id}/subscription':
     get:
       summary: Get User Subscription
       tags:
@@ -388,7 +388,7 @@ paths:
     parameters:
       - schema:
           type: string
-        name: studentid
+        name: external-id
         in: path
         required: true
   /institution/subscriptions:
