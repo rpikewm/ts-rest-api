@@ -452,14 +452,14 @@ components:
       title: Error
       type: object
       description: Represents a result either success or failure. id=1
+      x-examples:
+        example-1:
+          id: 0
+          message: string
+          success: true
+          '': string
       properties:
-        id:
-          type: number
         message:
-          type: string
-        success:
-          type: boolean
-        '':
           type: string
       required:
         - message
@@ -471,8 +471,10 @@ components:
           type: string
         expiration:
           type: string
+          format: date
       required:
         - keycode
+      description: 'Represents a key code attached to a user. The Keycode is the only thing that can be changed, '
     KeycodeUsage:
       title: KeycodeUsage
       type: object
