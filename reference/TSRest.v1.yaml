@@ -315,12 +315,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StudentSubscription'
+              examples:
+                LAT&AMS Demo Organization:
+                  value:
+                    expiration: '2020-11-10T17:33:29.72'
+                    keycode: JHNXDX-TFJXCX
+                    studentid: dfgrt45678
         '400':
           description: Invalid Request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              examples:
+                Invalid Student ID:
+                  value:
+                    message: Student not found
+                    status: 3
         '401':
           description: You need to authorize.
           content:
@@ -416,7 +427,7 @@ paths:
       description: Lists all keycodes
   /institution/subscriptions/keycode:
     get:
-      summary: Your GET endpoint
+      summary: Get Available Key Codes
       tags:
         - Institutions
         - Subscriptions
@@ -438,7 +449,7 @@ paths:
         '404':
           description: Not Found
       operationId: get-institution-subscriptions-keycode
-      description: ''
+      description: Gets a list of active keycodes that have not expired and returns them.
 components:
   schemas:
     User:
@@ -526,7 +537,6 @@ components:
           type: string
         expiration:
           type: string
-          format: date-time
         keycode:
           type: string
   securitySchemes:
