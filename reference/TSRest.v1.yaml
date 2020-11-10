@@ -314,7 +314,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/KeyCode'
+                $ref: '#/components/schemas/StudentSubscription'
         '400':
           description: Invalid Request
           content:
@@ -345,8 +345,8 @@ paths:
       summary: Remove Subscription
       operationId: delete-users-externalId-external-id-subscription
       responses:
-        '202':
-          description: Accepted
+        '200':
+          description: OK
         '400':
           description: Bad Request
         '401':
@@ -378,7 +378,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/KeyCode'
+              $ref: '#/components/schemas/StudentSubscription'
         description: Keycode to associate with End User
       description: Associates a keycode with an End User.
       tags:
@@ -414,6 +414,31 @@ paths:
           description: Forbidden
       operationId: get-institution-subscriptions
       description: Lists all keycodes
+  /institution/subscriptions/keycode:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Institutions
+        - Subscriptions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KeyCode'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: get-institution-subscriptions-keycode
+      description: ''
 components:
   schemas:
     User:
@@ -493,6 +518,17 @@ components:
           type: integer
         totalcount:
           type: number
+    StudentSubscription:
+      title: KeyCodeActive
+      type: object
+      properties:
+        studentid:
+          type: string
+        expiration:
+          type: string
+          format: date-time
+        keycode:
+          type: string
   securitySchemes:
     auth0key:
       type: oauth2
