@@ -97,6 +97,7 @@ paths:
         - auth0key: []
       tags:
         - Demographics
+        - Users
     post:
       summary: ''
       operationId: post-users-externalId-external_id-demographics
