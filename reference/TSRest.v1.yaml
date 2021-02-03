@@ -414,6 +414,29 @@ paths:
           description: Forbidden
       operationId: get-institution-subscriptions
       description: Lists all keycodes
+  /institution/keycodes:
+    get:
+      summary: Gets keycodes for the institution
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KeyCode'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: get-institution-keycodes
+      description: Lists keycodes.
 components:
   schemas:
     User:
